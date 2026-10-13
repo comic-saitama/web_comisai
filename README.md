@@ -1,6 +1,6 @@
-# コミックさいたま（仮）準備会 公式サイト
+# コミックさいたま準備会 公式サイト
 
-むつめ祭同人即売会「コミックさいたま（仮）準備会」の公式サイトです。
+むつめ祭同人即売会「コミックさいたま準備会」の公式サイトです。
 [Astro](https://astro.build/) で作成し、GitHub Pages で公開しています。
 
 - 公開URL: https://comic-saitama.github.io/web_comisai/

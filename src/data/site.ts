@@ -1,7 +1,7 @@
 // サイト全体で使う団体情報。連絡先などはここだけを書き換える。
 export const site = {
-  name: 'コミックさいたま（仮）準備会',
-  fullName: 'むつめ祭同人即売会「コミックさいたま（仮）準備会」',
+  name: 'コミックさいたま準備会',
+  fullName: 'むつめ祭同人即売会「コミックさいたま準備会」',
   copyrightHolder: 'コミックさいたま準備会',
   email: 'comic.saitadai@gmail.com',
   x: {
