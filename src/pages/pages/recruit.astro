@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site, obfuscatedEmail } from '../../data/site';
+import { site, obfuscatedEmail, forms } from '../../data/site';
+import FormButton from '../../components/FormButton.astro';
 ---
 <BaseLayout
   title="スタッフ募集中！"
@@ -19,7 +20,7 @@ import { site, obfuscatedEmail } from '../../data/site';
   </ul>
 
   <h2>応募方法</h2>
-  <p class="margin-botom">　ページ下記のフォームからご応募いただくか、下記のメールアドレスまたはX（旧Twitter）DMに以下の内容をお送りください。</p>
+  <p class="margin-botom">　下記の応募フォームからご応募いただくか、下記のメールアドレスまたはX（旧Twitter）DMに以下の内容をお送りください。</p>
   <h3>応募内容</h3>
   <ul>
     <li>氏名（ふりがな）</li>
@@ -31,12 +32,10 @@ import { site, obfuscatedEmail } from '../../data/site';
 
   <h2>応募先</h2>
   <ul>
-    <li>応募フォーム：下記</li>
+    <li>応募フォーム：下記のボタンから</li>
     <li>メール（件名はスタッフ応募としてください）：{obfuscatedEmail}（[at]をアットマークに置き換えてください）</li>
     <li>X（旧Twitter）DM：<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a></li>
   </ul>
 
-  <div class="google_form" id="mail_form">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScuGxYh-rDsL_Ho6wAsP4RaIqTMBAp8vSroTdMOuYsddU9vSw/viewform?usp=publish-editor" title="スタッフ応募フォーム">読み込んでいます…</iframe>
-  </div>
+  <FormButton href={forms.staff} label="スタッフ応募フォームを開く" />
 </BaseLayout>

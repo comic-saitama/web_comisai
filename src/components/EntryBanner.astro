@@ -1,0 +1,45 @@
+---
+import { event } from '../data/site';
+import { formatJaDate } from '../lib/date';
+import { url } from '../lib/url';
+
+const { status, formUrl, deadline } = event.entry;
+---
+{status === 'upcoming' && (
+  <div class="entry-banner entry-banner--upcoming">
+    <p class="entry-banner-text">
+      <strong>サークル参加の募集要項は準備中です。</strong>
+      メーリングリストに登録すると、公開時にお知らせが届きます。
+    </p>
+    <a class="entry-banner-link" href={url('/pages/services.html#mailing-list')}>メーリングリストに登録</a>
+  </div>
+)}
+{status === 'open' && (
+  <div class="entry-banner entry-banner--open" data-deadline={deadline}>
+    <p class="entry-banner-text">
+      <strong>サークル参加申込 受付中！</strong>
+      {deadline && <span>締切 {formatJaDate(deadline)}<span class="entry-countdown" hidden></span></span>}
+    </p>
+    <a class="entry-banner-link" href={formUrl} target="_blank" rel="noopener">申し込む</a>
+  </div>
+)}
+{status === 'closed' && (
+  <div class="entry-banner entry-banner--closed">
+    <p class="entry-banner-text"><strong>サークル参加の申込受付は終了しました。</strong>たくさんのお申し込みありがとうございました。</p>
+  </div>
+)}
+
+<script>
+  // 締切までの残り日数は閲覧時点で計算する（静的サイトなのでビルド時に固定しない）
+  const banner = document.querySelector<HTMLElement>('.entry-banner--open[data-deadline]');
+  const countdown = banner?.querySelector<HTMLElement>('.entry-countdown');
+  const deadline = banner?.dataset.deadline;
+  if (banner && countdown && deadline) {
+    // 日本時間の「今日」と締切日の暦日差（0 = 本日締切）
+    const todayJst = new Date(Date.now() + 9 * 3_600_000).toISOString().slice(0, 10);
+    const days = Math.round((Date.parse(deadline) - Date.parse(todayJst)) / 86_400_000);
+    if (days > 0) countdown.textContent = `（あと${days}日）`;
+    else if (days === 0) countdown.textContent = '（本日締切）';
+    if (days >= 0) countdown.hidden = false;
+  }
+</script>
