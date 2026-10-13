@@ -16,6 +16,13 @@ updates:
         patterns:
           - "*"
     open-pull-requests-limit: 5
+    ignore:
+      # @astrojs/check が TypeScript 7 に対応する（peer に ^7 が入る）まで、メジャー更新を提案させない
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      # CSS リセット。メジャー更新は表示が変わる可能性があるので、表示確認のうえ手動で上げる
+      - dependency-name: "ress"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
