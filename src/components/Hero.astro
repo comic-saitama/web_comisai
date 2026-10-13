@@ -16,7 +16,7 @@ const entryOpen = event.entry.status === 'open' && event.entry.formUrl;
   <div class="hero-inner">
     <p class="hero-tagline">{event.tagline}</p>
     <h1 id="hero-title" class="hero-title">
-      <Image src={logo} alt={event.name} widths={[360, 720]} sizes="(max-width: 480px) 80vw, 360px" loading="eager" fetchpriority="high" />
+      <Image src={logo} alt={event.name} width={720} widths={[360, 480, 600, 720]} sizes="(max-width: 480px) 80vw, 360px" quality={70} loading="eager" fetchpriority="high" />
     </h1>
     <dl class="hero-info">
       <div>

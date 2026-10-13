@@ -42,7 +42,17 @@ date: 2026-10-20
 
 `src/data/site.ts` を書き換えます。全ページのヘッダー・フッター・本文に反映されます。
 
+### 参加詳細（募集要項・日程）を埋める
+
+`src/data/participation.ts` の各項目の `value` を、決まったものから埋めます。空の項目は「未定」と表示されます。
+
+- `published: false` の間は、参加詳細ページの募集要項欄は `npm run dev` でだけ下書きとして表示されます
+- 内容を準備会で確認したら `published: true` にすると公開されます（issue #14）
+
 ### Discord サーバーを表示する
+
+サーバーの作り方（チャンネル構成・ロール・ルール文案・招待リンクの作り方）は [docs/discord-setup.md](docs/discord-setup.md) を参照してください。
+
 
 `src/data/site.ts` の `discord.inviteUrl` に招待URLを入れると、「最新情報を受け取る」欄（トップ・参加詳細）とフッターに Discord が表示されます。空の間は表示されません。
 
@@ -64,6 +74,8 @@ date: 2026-10-20
 `src/drafts/` に置いたページは、開発サーバー（`npm run dev`）でだけ表示され、公開サイトには出力されません（リンクも出ません）。
 
 - 個人情報の取り扱い（下書き）: http://localhost:4321/web_comisai/pages/policy.html
+- 参加詳細の募集要項欄（下書き）: http://localhost:4321/web_comisai/pages/services.html
+- お知らせの下書き（`draft: true`）: トップページの「お知らせ」
 
 公開するときは、下書きを `src/pages/pages/` に移して `src/pages/pages/[draft].astro` の一覧から外し、`showDrafts` で隠しているリンクを常に表示するように変えます。
 

@@ -1,0 +1,12 @@
+---
+// 下書きであることを示す帯（npm run dev でだけ表示されるページ・欄に付ける）
+interface Props {
+  issue?: number;
+}
+const { issue } = Astro.props;
+---
+<div class="draft-banner" role="note">
+  <strong>下書き（ローカル確認用）</strong>
+  <slot>この内容は <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。</slot>
+  {issue && <span>（issue #{issue}）</span>}
+</div>

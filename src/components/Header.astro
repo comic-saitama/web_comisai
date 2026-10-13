@@ -18,7 +18,7 @@ const currentPath = normalize(Astro.url.pathname);
 ---
 <header>
   <a href={url('/')} class="header-logo" aria-label="トップページへ">
-    <Image src={logo} alt={site.name} height={40} densities={[1, 2]} loading="eager" />
+    <Image src={logo} alt={site.name} height={40} densities={[1, 2]} quality={60} loading="eager" />
   </a>
   <button type="button" class="hamburger-menu" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く">
     <span></span>
@@ -33,7 +33,7 @@ const currentPath = normalize(Astro.url.pathname);
         </li>
       ))}
       <li>
-        <a href={site.x.url} target="_blank" rel="noopener" aria-label="X (formerly Twitter)" class="social-icon">
+        <a href={site.x.url} target="_blank" rel="noopener" aria-label={`X（旧Twitter） @${site.x.handle}`} class="social-icon">
           <XIcon /><span>@{site.x.handle}</span>
         </a>
       </li>

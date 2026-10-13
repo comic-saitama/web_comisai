@@ -10,6 +10,8 @@ export default defineConfig({
   // 既存URL（/pages/services.html など）を維持するため .html で出力する
   build: {
     format: 'file',
+    // CSS は数KBと小さいので HTML に埋め込み、表示を妨げる追加リクエストをなくす
+    inlineStylesheets: 'always',
   },
   // 'never' だと開発サーバーで /web_comisai/（ホーム）が 404 になるため ignore にする
   trailingSlash: 'ignore',
