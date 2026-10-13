@@ -1,0 +1,46 @@
+name: 文言・情報を直したい
+description: サイトの文章や日程・連絡先などの修正を依頼します
+title: "[修正] "
+labels: ["content"]
+body:
+  - type: dropdown
+    id: page
+    attributes:
+      label: ページ
+      options:
+        - トップ
+        - 参加詳細
+        - スタッフ募集
+        - お問い合わせ
+        - 全ページ共通（ヘッダー・フッターなど）
+        - その他
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 今の文言
+      description: 直したい箇所をそのままコピーして貼ってください
+    validations:
+      required: true
+  - type: textarea
+    id: new
+    attributes:
+      label: 直したあとの文言
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: 理由・補足
+      placeholder: 例）会場が決まったため
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 急ぎ具合
+      options:
+        - 急ぎ（今日中）
+        - 数日以内
+        - 急がない
+    validations:
+      required: true

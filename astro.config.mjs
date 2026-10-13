@@ -11,7 +11,8 @@ export default defineConfig({
   build: {
     format: 'file',
   },
-  trailingSlash: 'never',
+  // 'never' だと開発サーバーで /web_comisai/（ホーム）が 404 になるため ignore にする
+  trailingSlash: 'ignore',
   integrations: [
     sitemap({
       // build.format: 'file' に合わせ、canonical と同じ .html 付きURLにする

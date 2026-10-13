@@ -761,3 +761,20 @@ main .hero-title {
   color: #fff;
   font-size: 0.875rem;
 }
+
+/* 下書きのお知らせ（npm run dev のときだけ表示される） */
+.news-list li.news-draft {
+  padding-left: 0.75em;
+  border-left: 4px dashed #b45309;
+  background-color: #fffbeb;
+}
+
+.news-draft-badge {
+  margin-right: 0.5em;
+  padding: 0.05em 0.5em;
+  border-radius: 4px;
+  background-color: #b45309;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+}

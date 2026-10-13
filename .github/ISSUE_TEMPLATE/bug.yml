@@ -1,0 +1,24 @@
+name: 表示がおかしい・リンクが切れている
+description: レイアウトの崩れ、リンク切れ、動かないボタンなどを報告します
+title: "[不具合] "
+labels: ["bug"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: ページのURL
+      placeholder: https://comic-saitama.github.io/web_comisai/...
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: 何が起きたか
+      description: 期待していた動きと、実際の動きを書いてください。スクリーンショットがあれば貼り付けてください。
+    validations:
+      required: true
+  - type: input
+    id: device
+    attributes:
+      label: 端末・ブラウザ
+      placeholder: 例）iPhone 15 / Safari、Windows / Chrome

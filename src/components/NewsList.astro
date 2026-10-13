@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { showDrafts } from '../lib/drafts';
 
-const entries = (await getCollection('news', ({ data }) => !data.draft))
+// draft: true のお知らせは公開サイトに出さず、開発サーバー（npm run dev）でだけ「下書き」として表示する
+const entries = (await getCollection('news', ({ data }) => showDrafts || !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const formatDate = (date: Date) =>
@@ -14,8 +16,9 @@ const formatDate = (date: Date) =>
       {entries.map(async (entry) => {
         const { Content } = await render(entry);
         return (
-          <li>
+          <li class:list={[{ 'news-draft': entry.data.draft }]}>
             <time datetime={entry.data.date.toISOString()}>{formatDate(entry.data.date)}</time>
+            {entry.data.draft && <span class="news-draft-badge">下書き</span>}
             <strong>{entry.data.title}</strong>
             <div class="news-body"><Content /></div>
           </li>
