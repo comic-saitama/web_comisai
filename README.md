@@ -53,8 +53,12 @@ date: 2026-10-20
 ## 公開の流れ
 
 1. ブランチを作って変更し、Pull Request を出す
-2. GitHub Actions でビルド（型チェック含む）が実行される。失敗したら修正する
-3. もう1人が確認して `main` にマージすると、自動で GitHub Pages に公開される
+2. GitHub Actions でビルド（型チェック・リンク切れチェック含む）が実行される。失敗したら修正する
+3. ビルドが成功したら `main` にマージする。自動で GitHub Pages に公開される
+
+- **他のメンバーによる確認は推奨（必須ではない）**です。文章の誤字や日程・連絡先など、公開して困る内容を変えたときは、できるだけ誰かに見てもらってからマージしてください。
+- `main` はブランチ保護されています。直接 push はできず、ビルドが成功しない PR はマージできません（管理者も同様）。
+- GitHub の画面でファイルを編集したときは、「Commit directly to the `main` branch」ではなく「Create a new branch for this commit and start a pull request」を選んでください。
 
 ## 手元で確認する
 
