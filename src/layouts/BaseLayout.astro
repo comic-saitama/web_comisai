@@ -12,9 +12,11 @@ interface Props {
   description: string;
   /** OGP / X カード用のタイトル。省略時は「{title} - {サイト名}」 */
   ogTitle?: string;
+  /** 検索エンジンに登録しない（404ページなど） */
+  noindex?: boolean;
 }
 
-const { title, description, ogTitle = `${title} - ${site.name}` } = Astro.props;
+const { title, description, ogTitle = `${title} - ${site.name}`, noindex = false } = Astro.props;
 const pageTitle = `${title} - ${site.fullName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url('/assets/images/ogp.png'), Astro.site).href;
@@ -28,6 +30,8 @@ const gaId = site.gaMeasurementId;
   <title>{pageTitle}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
+  {noindex && <meta name="robots" content="noindex">}
+  <link rel="sitemap" href={url('/sitemap-index.xml')}>
 
   <!-- OGP Tags -->
   <meta property="og:title" content={ogTitle}>

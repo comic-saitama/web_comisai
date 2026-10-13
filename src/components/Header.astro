@@ -1,9 +1,9 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import { site } from '../data/site';
 import { url } from '../lib/url';
 import XIcon from './XIcon.astro';
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
 
 const navItems = [
   { href: url('/'), label: 'ホーム' },
@@ -11,19 +11,27 @@ const navItems = [
   { href: url('/pages/recruit.html'), label: 'スタッフ募集中！' },
   { href: url('/pages/contact.html'), label: 'お問い合わせ' },
 ];
+
+// 現在のページ（/web_comisai/index.html と /web_comisai/ は同じページとして扱う）
+const normalize = (path: string) => path.replace(/index\.html$/, '').replace(/\/$/, '');
+const currentPath = normalize(Astro.url.pathname);
 ---
 <header>
   <a href={url('/')} class="header-logo" aria-label="トップページへ">
     <Image src={logo} alt={site.name} height={40} densities={[1, 2]} loading="eager" />
   </a>
-  <div class="hamburger-menu">
+  <button type="button" class="hamburger-menu" aria-expanded="false" aria-controls="global-nav" aria-label="メニューを開く">
     <span></span>
     <span></span>
     <span></span>
-  </div>
-  <nav class="global-nav">
+  </button>
+  <nav id="global-nav" class="global-nav" aria-label="メインメニュー">
     <ul>
-      {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      {navItems.map((item) => (
+        <li>
+          <a href={item.href} aria-current={normalize(item.href) === currentPath ? 'page' : undefined}>{item.label}</a>
+        </li>
+      ))}
       <li>
         <a href={site.x.url} target="_blank" rel="noopener" aria-label="X (formerly Twitter)" class="social-icon">
           <XIcon /><span>@{site.x.handle}</span>
@@ -34,11 +42,25 @@ const navItems = [
 </header>
 
 <script>
-  const hamburgerMenu = document.querySelector('.hamburger-menu');
+  const hamburgerMenu = document.querySelector<HTMLButtonElement>('.hamburger-menu');
   const nav = document.querySelector('.global-nav');
 
+  const setOpen = (open: boolean) => {
+    hamburgerMenu?.classList.toggle('active', open);
+    nav?.classList.toggle('active', open);
+    hamburgerMenu?.setAttribute('aria-expanded', String(open));
+    hamburgerMenu?.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+  };
+
   hamburgerMenu?.addEventListener('click', () => {
-    hamburgerMenu.classList.toggle('active');
-    nav?.classList.toggle('active');
+    setOpen(hamburgerMenu.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Esc キーで閉じてボタンにフォーカスを戻す
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburgerMenu?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      hamburgerMenu.focus();
+    }
   });
 </script>

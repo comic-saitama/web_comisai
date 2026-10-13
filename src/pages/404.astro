@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { url } from '../lib/url';
+---
+<BaseLayout
+  title="ページが見つかりません"
+  description="お探しのページは見つかりませんでした。"
+  noindex
+>
+  <h1>ページが見つかりません</h1>
+  <p>お探しのページは移動または削除されたか、URLが間違っている可能性があります。</p>
+  <p class="form-button">
+    <a class="button button--primary" href={url('/')}>トップページへ戻る</a>
+  </p>
+</BaseLayout>

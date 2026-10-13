@@ -1,0 +1,15 @@
+---
+// よくある質問。タップで開閉する（<details>）。
+interface Props {
+  items: { q: string; a: string }[];
+}
+const { items } = Astro.props;
+---
+<div class="faq">
+  {items.map((item) => (
+    <details class="faq-item">
+      <summary><span class="faq-mark" aria-hidden="true">Q</span>{item.q}</summary>
+      <p><span class="faq-mark faq-mark--a" aria-hidden="true">A</span>{item.a}</p>
+    </details>
+  ))}
+</div>
