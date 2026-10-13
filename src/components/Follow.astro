@@ -1,0 +1,43 @@
+---
+// 「最新情報を受け取る」欄。Discord を中心に、X とメーリングリストを並べる。
+// Discord は site.discord.inviteUrl が空の間は表示しない。
+import { site, forms } from '../data/site';
+import DiscordIcon from './DiscordIcon.astro';
+import XIcon from './XIcon.astro';
+
+const discordUrl = site.discord.inviteUrl;
+---
+<section class="follow" id="follow" aria-labelledby="follow-title">
+  <h2 id="follow-title">最新情報を受け取る</h2>
+  <ul class="follow-list">
+    {discordUrl && (
+      <li class="follow-item follow-item--primary">
+        <div class="follow-head">
+          <DiscordIcon class="follow-icon" />
+          <h3>Discordサーバー</h3>
+          <span class="follow-badge">おすすめ</span>
+        </div>
+        <p>お知らせチャンネルで募集開始や日程などの最新情報をお届けします。参加者同士の交流や、準備会への質問もできます。</p>
+        <a class="button button--primary" href={discordUrl} target="_blank" rel="noopener">Discordに参加する</a>
+        <small class="follow-note">Discordアカウント（無料）が必要です</small>
+      </li>
+    )}
+    <li class="follow-item">
+      <div class="follow-head">
+        <XIcon class="follow-icon" />
+        <h3>X（旧Twitter）</h3>
+      </div>
+      <p>日々の準備の様子やお知らせを発信しています。</p>
+      <a class="button button--secondary" href={site.x.url} target="_blank" rel="noopener">@{site.x.handle} をフォロー</a>
+    </li>
+    <li class="follow-item" id="mailing-list">
+      <div class="follow-head">
+        <svg class="follow-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+        <h3>メーリングリスト</h3>
+      </div>
+      <p>重要なお知らせをメールでお届けします。</p>
+      <a class="button button--secondary" href={forms.mailingList} target="_blank" rel="noopener">メールで受け取る</a>
+      <small class="follow-note">Googleフォームが別タブで開きます</small>
+    </li>
+  </ul>
+</section>

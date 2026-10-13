@@ -1,17 +1,19 @@
 ---
-import { event } from '../data/site';
+import { event, site } from '../data/site';
 import { formatJaDate } from '../lib/date';
 import { url } from '../lib/url';
 
 const { status, formUrl, deadline } = event.entry;
+// お知らせを受け取れる手段（Discord は招待URLがあるときだけ）
+const channels = [site.discord.inviteUrl && 'Discord', 'X', 'メーリングリスト'].filter(Boolean).join('・');
 ---
 {status === 'upcoming' && (
   <div class="entry-banner entry-banner--upcoming">
     <p class="entry-banner-text">
       <strong>サークル参加の募集要項は準備中です。</strong>
-      メーリングリストに登録すると、公開時にお知らせが届きます。
+      {channels}で、公開時にお知らせします。
     </p>
-    <a class="entry-banner-link" href={url('/pages/services.html#mailing-list')}>メーリングリストに登録</a>
+    <a class="entry-banner-link" href={url('/#follow')}>最新情報を受け取る</a>
   </div>
 )}
 {status === 'open' && (

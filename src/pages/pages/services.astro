@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site, forms } from '../../data/site';
-import FormButton from '../../components/FormButton.astro';
+import { site } from '../../data/site';
+import Follow from '../../components/Follow.astro';
 ---
 <BaseLayout
   title="参加詳細"
@@ -9,10 +9,8 @@ import FormButton from '../../components/FormButton.astro';
 >
   <h1>参加詳細</h1>
   <p>
-    募集要項・日程は決定し次第、本ページやX(<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a>)、メーリングリスト等で順次ご案内します。本ページをブックマークおよびXのフォローをしてお待ちください。
+    募集要項・日程は決定し次第、本ページやX(<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a>)等で順次ご案内します。下記のいずれかで最新情報を受け取れます。
   </p>
 
-  <h2 id="mailing-list">メーリングリスト</h2>
-  <p>コミックさいたま関連情報配信用のメーリングリストは、下記からご登録いただけます。</p>
-  <FormButton href={forms.mailingList} label="メーリングリストに登録する" />
+  <Follow />
 </BaseLayout>
