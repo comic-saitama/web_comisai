@@ -15,6 +15,10 @@ export default defineConfig({
   },
   // 'never' だと開発サーバーで /web_comisai/（ホーム）が 404 になるため ignore にする
   trailingSlash: 'ignore',
+  // GitHub Codespaces のプレビュー（*.app.github.dev）から開発サーバーに接続できるようにする（開発時のみ有効）
+  server: {
+    allowedHosts: ['.app.github.dev'],
+  },
   integrations: [
     sitemap({
       // build.format: 'file' に合わせ、canonical と同じ .html 付きURLにする

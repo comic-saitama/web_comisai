@@ -1,0 +1,27 @@
+// GitHub Codespaces（ブラウザ上の開発環境）の設定。
+// リポジトリの「Code」→「Codespaces」→「Create codespace on main」で起動すると、
+// 依存パッケージのインストールと開発サーバー（npm run dev）の起動まで自動で行う。
+// 下書き（プライバシーポリシー・募集要項・お知らせ）もこの開発サーバーで確認できる。
+{
+  "name": "コミックさいたま 公式サイト",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "postCreateCommand": "npm ci",
+  "postAttachCommand": {
+    "dev": "npm run dev"
+  },
+  "forwardPorts": [4321],
+  "portsAttributes": {
+    "4321": {
+      "label": "サイトのプレビュー（/web_comisai を開く）",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["astro-build.astro-vscode"]
+    },
+    "codespaces": {
+      "openFiles": ["README.md"]
+    }
+  }
+}
