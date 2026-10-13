@@ -1,0 +1,24 @@
+---
+// 「項目名: 内容」の一覧。内容が空の項目は「未定」と表示する。
+import type { Item } from '../data/participation';
+
+interface Props {
+  items: Item[];
+}
+const { items } = Astro.props;
+---
+<dl class="spec-list">
+  {items.map((item) => (
+    <div>
+      <dt>{item.label}</dt>
+      <dd>
+        {item.value ? (
+          item.value.split('\n').map((line, i) => (i === 0 ? line : <><br />{line}</>))
+        ) : (
+          <span class="tbd">未定</span>
+        )}
+        {item.note && <small class="spec-note">{item.note}</small>}
+      </dd>
+    </div>
+  ))}
+</dl>

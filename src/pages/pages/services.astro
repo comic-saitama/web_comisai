@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site } from '../../data/site';
 import Follow from '../../components/Follow.astro';
+import ParticipationDetails from '../../components/ParticipationDetails.astro';
 ---
 <BaseLayout
   title="参加詳細"
@@ -11,6 +12,8 @@ import Follow from '../../components/Follow.astro';
   <p>
     募集要項・日程は決定し次第、本ページやX(<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a>)等で順次ご案内します。下記のいずれかで最新情報を受け取れます。
   </p>
+
+  <ParticipationDetails />
 
   <Follow />
 </BaseLayout>

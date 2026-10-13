@@ -2,17 +2,17 @@
 // プライバシーポリシー（下書き）。「要決定」の箇所を準備会で決めてから公開する（issue #13）。
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
+import DraftBanner from '../components/DraftBanner.astro';
 ---
 <BaseLayout
   title="個人情報の取り扱いについて"
   description="コミックさいたま準備会における個人情報の取り扱い（プライバシーポリシー）です。"
   noindex
 >
-  <div class="draft-banner" role="note">
-    <strong>下書き（ローカル確認用）</strong>
+  <DraftBanner issue={13}>
     このページは <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。
-    <mark class="todo">要決定</mark> の箇所を準備会で決めてから公開してください（issue #13）。
-  </div>
+    <mark class="todo">要決定</mark> の箇所を準備会で決めてから公開してください。
+  </DraftBanner>
 
   <h1>個人情報の取り扱いについて</h1>
   <p>{site.copyrightHolder}（以下「当会」）は、当会のウェブサイトおよび各種フォームを通じてお預かりする個人情報を、以下のとおり取り扱います。</p>
@@ -78,20 +78,6 @@ import { site } from '../data/site';
 </BaseLayout>
 
 <style>
-  .draft-banner {
-    margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem;
-    border: 2px dashed #b45309;
-    border-radius: 8px;
-    background-color: #fffbeb;
-    color: #78350f;
-    font-size: 0.9375rem;
-  }
-
-  .draft-banner strong {
-    margin-right: 0.5em;
-  }
-
   .todo {
     padding: 0 0.25em;
     background-color: #fde68a;

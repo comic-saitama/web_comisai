@@ -75,7 +75,7 @@
 | ページ | 掲載内容 | 状態 |
 |---|---|---|
 | **トップ** `/` | 告知欄（ロゴ・開催時期/日程・会場・ボタン）、申込状況の帯、お知らせ、イベント概要、開催スケジュール、最新情報を受け取る、参加方式、Q&A、主宰挨拶 | ✅（日程は未定表示） |
-| **参加詳細** `/pages/services.html` | 募集要項（資格・スペース・参加費・委託手数料）、日程、申込導線、頒布物ガイドライン、FAQ、最新情報を受け取る | 一部（募集要項は #14） |
+| **参加詳細** `/pages/services.html` | 募集要項（資格・スペース・参加費・委託手数料）、日程、申込導線、頒布物ガイドライン、FAQ、最新情報を受け取る | 一部。募集要項欄の骨組みは作成済み（`src/data/participation.ts`、`published: false` の間は `npm run dev` でのみ表示。#14） |
 | **スタッフ募集** `/pages/recruit.html` | 募集要項、活動内容、応募フォーム、個人情報の取り扱いへのリンク | ✅（ポリシーへのリンクは #13 公開時） |
 | **お問い合わせ** `/pages/contact.html` | メール、X、メンバー | ✅ |
 | **個人情報の取り扱い** `/pages/policy.html` | 取得する情報、利用目的、管理・保管期間、第三者提供、外部サービス、開示等の窓口 | 下書き（`npm run dev` でのみ表示、#13） |
@@ -117,7 +117,7 @@
 | URL | `site: https://comic-saitama.github.io`、`base: /web_comisai`、`build.format: 'file'`（`/pages/*.html` を維持） |
 | 設定・データ | `src/data/site.ts`（団体・連絡先・SNS・GA・イベント・フォーム）、`src/content/news/*.md`（お知らせ） |
 | 下書き | `src/drafts/` に置き、`src/pages/pages/[draft].astro` から開発サーバーでのみ表示 |
-| 品質チェック | `astro check`、`scripts/check-links.mjs`（リンク・アンカー切れ） |
+| 品質チェック | `astro check`、`scripts/check-links.mjs`（リンク・アンカー切れ）。Lighthouse（モバイル）は全ページ 性能・アクセシビリティ・ベストプラクティス・SEO とも 100（2026-10-13 計測） |
 | 依存更新 | Dependabot（npm 毎週、GitHub Actions 毎月） |
 | 改行コード | `.gitattributes` で LF に統一 |
 
@@ -201,7 +201,7 @@
 | issue | 内容 | 待っているもの |
 |---|---|---|
 | #1 | Google アナリティクスの測定IDを設定 | GA4 の測定ID |
-| #12 | Discord の招待URLを設定 | Discord サーバーの開設 |
+| #12 | Discord の招待URLを設定 | Discord サーバーの開設（手順は [discord-setup.md](discord-setup.md)） |
 | #13 | プライバシーポリシーを公開 | 利用目的・保管期間などの決定（下書きは `npm run dev` で確認可） |
-| #14 | 参加詳細に募集要項・日程を掲載 | 募集要項の決定 |
+| #14 | 参加詳細に募集要項・日程を掲載 | 募集要項の決定（`src/data/participation.ts` の「未定」を埋める） |
 | #15 | 来場案内ページを作成 | 会場・日程の決定 |

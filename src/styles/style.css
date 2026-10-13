@@ -778,3 +778,58 @@ main .hero-title {
   font-size: 0.75rem;
   font-weight: bold;
 }
+
+/* --- 下書きの帯（npm run dev でだけ表示） --- */
+.draft-banner {
+  margin: 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px dashed #b45309;
+  border-radius: 8px;
+  background-color: #fffbeb;
+  color: #78350f;
+  font-size: 0.9375rem;
+}
+
+.draft-banner strong {
+  margin-right: 0.5em;
+}
+
+/* --- 項目一覧（募集要項など） --- */
+.spec-list {
+  margin: 0 0 1.5em;
+  border-top: 1px solid var(--color-border);
+}
+
+.spec-list > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.25em;
+  padding: 0.75em 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.spec-list dt {
+  font-weight: bold;
+  color: var(--color-brand-strong);
+}
+
+.spec-list dd {
+  margin: 0;
+}
+
+.spec-note {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+}
+
+.tbd {
+  color: var(--color-muted);
+}
+
+@media (min-width: 768px) {
+  .spec-list > div {
+    grid-template-columns: 14em 1fr;
+    gap: 1em;
+  }
+}
