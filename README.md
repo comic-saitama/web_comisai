@@ -5,6 +5,7 @@
 
 - 公開URL: https://comic-saitama.github.io/web_comisai/
 - 要件定義・残タスク: [docs/requirements.md](docs/requirements.md)
+- 参加資格・頒布物ルールの調査: [docs/participation-rules-research.md](docs/participation-rules-research.md)
 
 ## よくある更新
 
