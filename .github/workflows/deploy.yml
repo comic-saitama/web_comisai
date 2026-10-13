@@ -20,7 +20,7 @@ concurrency:
 jobs:
   # PR でもビルド（型チェック含む）を実行し、壊れた変更を main に入れない
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # ubuntu-latest の自動移行（2026-10-19〜 Ubuntu 26）で急に壊れないよう固定
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -31,7 +31,7 @@ jobs:
   deploy:
     if: github.event_name != 'pull_request'
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04 # ubuntu-latest の自動移行（2026-10-19〜 Ubuntu 26）で急に壊れないよう固定
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

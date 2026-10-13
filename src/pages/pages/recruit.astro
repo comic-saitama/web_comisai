@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { site, obfuscatedEmail, forms } from '../../data/site';
 import FormButton from '../../components/FormButton.astro';
+import { showDrafts } from '../../lib/drafts';
+import { url } from '../../lib/url';
 ---
 <BaseLayout
   title="スタッフ募集中！"
@@ -38,4 +40,7 @@ import FormButton from '../../components/FormButton.astro';
   </ul>
 
   <FormButton href={forms.staff} label="スタッフ応募フォームを開く" />
+  {showDrafts && (
+    <p class="page-note">ご入力いただいた情報は「<a href={url('/pages/policy.html')}>個人情報の取り扱い</a>」に基づいて管理します。</p>
+  )}
 </BaseLayout>

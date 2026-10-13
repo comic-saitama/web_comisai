@@ -755,3 +755,9 @@ main .hero-title {
     width: 100%;
   }
 }
+
+/* フッターのリンク（個人情報の取り扱いなど） */
+.footer-links a {
+  color: #fff;
+  font-size: 0.875rem;
+}

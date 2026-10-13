@@ -4,6 +4,7 @@
 [Astro](https://astro.build/) で作成し、GitHub Pages で公開しています。
 
 - 公開URL: https://comic-saitama.github.io/web_comisai/
+- 要件定義・残タスク: [docs/requirements.md](docs/requirements.md)
 
 ## よくある更新
 
@@ -57,6 +58,14 @@ date: 2026-10-20
 | お問い合わせ | `src/pages/pages/contact.astro` |
 
 サイト内リンクは `url('/pages/recruit.html')` のように書きます（公開先のパス `/web_comisai` が自動で付きます）。
+
+## 下書きページを確認する
+
+`src/drafts/` に置いたページは、開発サーバー（`npm run dev`）でだけ表示され、公開サイトには出力されません（リンクも出ません）。
+
+- 個人情報の取り扱い（下書き）: http://localhost:4321/web_comisai/pages/policy.html
+
+公開するときは、下書きを `src/pages/pages/` に移して `src/pages/pages/[draft].astro` の一覧から外し、`showDrafts` で隠しているリンクを常に表示するように変えます。
 
 ## 公開の流れ
 
