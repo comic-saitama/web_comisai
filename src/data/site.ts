@@ -15,7 +15,7 @@ export const site = {
   },
   // Google アナリティクス 4 の測定ID（例: 'G-XXXXXXXXXX'）。空文字の間はタグを出力しない。
   // 差し替えは issue #1 を参照。
-  gaMeasurementId: '',
+  gaMeasurementId: 'G-CDT47QP7YB',
 } as const;
 
 // 画面表示用（スパム対策で @ を [at] に置き換える）
