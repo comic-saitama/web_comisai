@@ -6,9 +6,9 @@ import { event } from '../data/site';
 import { formatMonthDay, formatWeekday } from '../lib/date';
 import { url } from '../lib/url';
 
-const first = event.dates[0];
-const last = event.dates[event.dates.length - 1];
-const year = first.slice(0, 4);
+// 日程が決まっていれば日付、未定なら開催時期を表示する
+const first = event.dates.at(0);
+const last = event.dates.at(-1);
 const entryOpen = event.entry.status === 'open' && event.entry.formUrl;
 ---
 <section class="hero" aria-labelledby="hero-title">
@@ -20,13 +20,24 @@ const entryOpen = event.entry.status === 'open' && event.entry.formUrl;
     </h1>
     <dl class="hero-info">
       <div>
-        <dt>開催日</dt>
-        <dd>
-          <span class="hero-year">{year}</span>
-          {formatMonthDay(first)}<small>({formatWeekday(first)})</small>
-          <span class="hero-sep">–</span>
-          {formatMonthDay(last)}<small>({formatWeekday(last)})</small>
-        </dd>
+        <dt>{first ? '開催日' : '開催時期'}</dt>
+        {first && last ? (
+          <dd>
+            <span class="hero-year">{first.slice(0, 4)}</span>
+            {formatMonthDay(first)}<small>({formatWeekday(first)})</small>
+            {last !== first && (
+              <>
+                <span class="hero-sep">–</span>
+                {formatMonthDay(last)}<small>({formatWeekday(last)})</small>
+              </>
+            )}
+          </dd>
+        ) : (
+          <dd>
+            {event.period}
+            <small class="hero-note">日程は決定し次第お知らせします</small>
+          </dd>
+        )}
       </div>
       <div>
         <dt>会場</dt>

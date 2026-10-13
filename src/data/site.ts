@@ -20,8 +20,10 @@ export const obfuscatedEmail = site.email.replace('@', '[at]');
 export const event = {
   name: 'コミックさいたま',
   tagline: 'むつめ祭 同人誌即売会',
-  /** 開催日（YYYY-MM-DD） */
-  dates: ['2026-11-28', '2026-11-29', '2026-11-30'],
+  /** 開催時期（日程が未定の間はこれを表示する） */
+  period: '2027年度 むつめ祭',
+  /** 開催日（YYYY-MM-DD）。未定の間は空にしておく。例: ['2027-11-27', '2027-11-28'] */
+  dates: [] as string[],
   venue: '埼玉大学（むつめ祭会場内）',
   venueNote: '会場の詳細は決定し次第お知らせします',
   /** サークル参加申込 */
