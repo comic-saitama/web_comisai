@@ -10,7 +10,10 @@ const { items } = Astro.props;
 <dl class="spec-list">
   {items.map((item) => (
     <div>
-      <dt>{item.label}</dt>
+      <dt>
+        {item.label}
+        {item.tentative && <span class="tentative-badge" title="たたき台（未確定）">仮</span>}
+      </dt>
       <dd>
         {item.value ? (
           item.value.split('\n').map((line, i) => (i === 0 ? line : <><br />{line}</>))

@@ -1,6 +1,6 @@
 ---
 // 参加詳細ページの募集要項欄。participation.published が false の間は npm run dev でだけ下書きとして表示する。
-import { participation } from '../data/participation';
+import { participation, tentativeItems } from '../data/participation';
 import { event } from '../data/site';
 import { showDrafts } from '../lib/drafts';
 import DraftBanner from './DraftBanner.astro';
@@ -8,14 +8,23 @@ import FormButton from './FormButton.astro';
 import SpecList from './SpecList.astro';
 
 const visible = participation.published || showDrafts;
+
+// 仮（tentative）の項目が残ったまま公開しようとしたらビルドを止める
+const tentative = tentativeItems();
+if (participation.published && tentative.length > 0) {
+  throw new Error(
+    `participation.ts: published: true ですが、仮（tentative）の項目が ${tentative.length} 件残っています: ${tentative.join('、')}`,
+  );
+}
 const entryOpen = event.entry.status === 'open' && event.entry.formUrl;
 ---
 {visible && (
   <section class="participation" aria-label="募集要項">
     {!participation.published && (
       <DraftBanner issue={14}>
-        この募集要項欄は <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。「未定」の項目を
-        <code>src/data/participation.ts</code> で埋め、<code>published: true</code> にすると公開されます。
+        この募集要項欄は <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。
+        「<span class="tentative-badge">仮</span>」の項目はたたき台です（{tentative.length} 件）。準備会で確定したら
+        <code>src/data/participation.ts</code> の <code>tentative</code> を消し、<code>published: true</code> にすると公開されます。
       </DraftBanner>
     )}
 
