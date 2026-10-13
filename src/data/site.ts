@@ -8,6 +8,11 @@ export const site = {
     handle: 'ComicSaidai',
     url: 'https://x.com/ComicSaidai',
   },
+  discord: {
+    // Discordサーバーの招待URL（例: 'https://discord.gg/xxxxxxx'）。空文字の間はサイトに表示しない。
+    // 招待リンクは「有効期限: 無期限」「最大使用回数: 無制限」で作成すること。
+    inviteUrl: '' as string,
+  },
   // Google アナリティクス 4 の測定ID（例: 'G-XXXXXXXXXX'）。空文字の間はタグを出力しない。
   // 差し替えは issue #1 を参照。
   gaMeasurementId: '',
@@ -20,8 +25,10 @@ export const obfuscatedEmail = site.email.replace('@', '[at]');
 export const event = {
   name: 'コミックさいたま',
   tagline: 'むつめ祭 同人誌即売会',
-  /** 開催日（YYYY-MM-DD） */
-  dates: ['2026-11-28', '2026-11-29', '2026-11-30'],
+  /** 開催時期（日程が未定の間はこれを表示する） */
+  period: '2027年度 むつめ祭',
+  /** 開催日（YYYY-MM-DD）。未定の間は空にしておく。例: ['2027-11-27', '2027-11-28'] */
+  dates: [] as string[],
   venue: '埼玉大学（むつめ祭会場内）',
   venueNote: '会場の詳細は決定し次第お知らせします',
   /** サークル参加申込 */
