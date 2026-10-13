@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site, obfuscatedEmail } from '../../data/site';
+import { url } from '../../lib/url';
+---
+<BaseLayout
+  title="お問い合わせ"
+  description="イベントやスタッフ参加に関するお問い合わせはこちらから。メールまたはX(旧Twitter)のDMにてご連絡ください。"
+>
+  <h1>お問い合わせ</h1>
+  <h2>連絡先</h2>
+  <ul class="margin-botom">
+    <li>メール：{obfuscatedEmail}（[at]をアットマークに置き換えてください）</li>
+    <li>X（旧Twitter）：<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a></li>
+  </ul>
+
+  <h2>メンバー</h2>
+  <ul class="margin-botom">
+    <li>代表：天てゃ（学部4年）</li>
+    <li>他7名</li>
+  </ul>
+
+  <p>企画メンバー・運営スタッフは絶賛応募中です。詳しくは<a href={url('/pages/recruit.html')}>スタッフ募集中！</a>のページをご覧ください。</p>
+
+  <h2>関連リンク</h2>
+  <p class="margin-botom">近日公開予定です。</p>
+</BaseLayout>

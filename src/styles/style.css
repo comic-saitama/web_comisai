@@ -293,3 +293,23 @@ main ul {
 .header-logo svg {
   vertical-align: middle; /* 他要素との縦方向の位置を調整 */
 }
+
+/* News Style */
+.news-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.news-list li {
+  padding: 0.75em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.news-list time {
+  margin-right: 1em;
+  color: #666;
+}
+
+.news-body {
+  margin-top: 0.25em;
+}
