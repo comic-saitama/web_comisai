@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site';
 import XIcon from './XIcon.astro';
+import DiscordIcon from './DiscordIcon.astro';
 ---
 <footer>
   <div class="footer-content">
@@ -19,6 +20,14 @@ import XIcon from './XIcon.astro';
           <span>@{site.x.handle}</span>
         </a>
       </div>
+      {site.discord.inviteUrl && (
+        <div class="social-links">
+          <a href={site.discord.inviteUrl} target="_blank" rel="noopener">
+            <DiscordIcon />
+            <span>Discordサーバー</span>
+          </a>
+        </div>
+      )}
     </div>
     <p class="copyright">Copyright &copy; 2026 {site.copyrightHolder} All Rights Reserved</p>
   </div>

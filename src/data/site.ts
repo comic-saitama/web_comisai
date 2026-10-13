@@ -8,6 +8,11 @@ export const site = {
     handle: 'ComicSaidai',
     url: 'https://x.com/ComicSaidai',
   },
+  discord: {
+    // Discordサーバーの招待URL（例: 'https://discord.gg/xxxxxxx'）。空文字の間はサイトに表示しない。
+    // 招待リンクは「有効期限: 無期限」「最大使用回数: 無制限」で作成すること。
+    inviteUrl: '' as string,
+  },
   // Google アナリティクス 4 の測定ID（例: 'G-XXXXXXXXXX'）。空文字の間はタグを出力しない。
   // 差し替えは issue #1 を参照。
   gaMeasurementId: '',
