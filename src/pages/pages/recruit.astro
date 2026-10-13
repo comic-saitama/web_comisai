@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site, obfuscatedEmail } from '../../data/site';
+---
+<BaseLayout
+  title="スタッフ募集中！"
+  ogTitle={`運営スタッフ募集 - ${site.name}`}
+  description="2026年のむつめ祭同人即売会開催に向け、運営スタッフを募集しています。企画、デザイン、広報など、イベント運営に興味がある方はぜひご参加ください。"
+>
+  <h1>スタッフ募集中！</h1>
+  <p class="margin-botom">
+    　以下の内容で本会のスタッフを募集します。同人即売会や創作に興味のある方、イベントを一から立ち上げてみたい方など、ぜひご参加ください。未経験者歓迎です。
+  </p>
+
+  <h2>募集要項</h2>
+  <ul>
+    <li>対象：埼玉大学の学生および教職員（課程・学年・所属不問）</li>
+    <li>活動内容：企画/渉外/会計/デザイン/ホームページ作成/設営/誘導 etc…</li>
+  </ul>
+
+  <h2>応募方法</h2>
+  <p class="margin-botom">　ページ下記のフォームからご応募いただくか、下記のメールアドレスまたはX（旧Twitter）DMに以下の内容をお送りください。</p>
+  <h3>応募内容</h3>
+  <ul>
+    <li>氏名（ふりがな）</li>
+    <li>所属</li>
+    <li>学籍番号または職員番号</li>
+    <li>大学発行メールアドレス</li>
+    <li>Xアカウント（任意）</li>
+  </ul>
+
+  <h2>応募先</h2>
+  <ul>
+    <li>応募フォーム：下記</li>
+    <li>メール（件名はスタッフ応募としてください）：{obfuscatedEmail}（[at]をアットマークに置き換えてください）</li>
+    <li>X（旧Twitter）DM：<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a></li>
+  </ul>
+
+  <div class="google_form" id="mail_form">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScuGxYh-rDsL_Ho6wAsP4RaIqTMBAp8vSroTdMOuYsddU9vSw/viewform?usp=publish-editor" title="スタッフ応募フォーム">読み込んでいます…</iframe>
+  </div>
+</BaseLayout>

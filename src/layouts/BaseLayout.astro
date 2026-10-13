@@ -1,0 +1,73 @@
+---
+import 'ress/dist/ress.min.css';
+import '../styles/style.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+import { url } from '../lib/url';
+
+interface Props {
+  /** ページ名（<title> の先頭に入る） */
+  title: string;
+  description: string;
+  /** OGP / X カード用のタイトル。省略時は「{title} - {サイト名}」 */
+  ogTitle?: string;
+}
+
+const { title, description, ogTitle = `${title} - ${site.name}` } = Astro.props;
+const pageTitle = `${title} - ${site.fullName}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(url('/assets/images/ogp.png'), Astro.site).href;
+const gaId = site.gaMeasurementId;
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{pageTitle}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- OGP Tags -->
+  <meta property="og:title" content={ogTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content={site.name}>
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitter Card Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content={`@${site.x.handle}`}>
+  <meta name="twitter:title" content={ogTitle}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <link rel="icon" type="image/png" href={url('/assets/images/favicon.png')}>
+  <link rel="apple-touch-icon" href={url('/assets/images/apple-touch-icon.png')}>
+
+  {gaId && (
+    <>
+      <!-- Google tag (gtag.js) -->
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+      <script is:inline define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    </>
+  )}
+</head>
+<body>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>
