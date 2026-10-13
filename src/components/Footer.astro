@@ -2,6 +2,8 @@
 import { site } from '../data/site';
 import XIcon from './XIcon.astro';
 import DiscordIcon from './DiscordIcon.astro';
+import { showDrafts } from '../lib/drafts';
+import { url } from '../lib/url';
 ---
 <footer>
   <div class="footer-content">
@@ -29,6 +31,9 @@ import DiscordIcon from './DiscordIcon.astro';
         </div>
       )}
     </div>
+    {showDrafts && (
+      <p class="footer-links"><a href={url('/pages/policy.html')}>個人情報の取り扱い</a></p>
+    )}
     <p class="copyright">Copyright &copy; 2026 {site.copyrightHolder} All Rights Reserved</p>
   </div>
 </footer>
