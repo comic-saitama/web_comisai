@@ -1,0 +1,24 @@
+# 依存パッケージと GitHub Actions の更新を自動で PR にする
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: Asia/Tokyo
+    groups:
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+      others:
+        patterns:
+          - "*"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      timezone: Asia/Tokyo
