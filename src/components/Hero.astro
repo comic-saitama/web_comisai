@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import EntryBanner from './EntryBanner.astro';
+import { event } from '../data/site';
+import { formatMonthDay, formatWeekday } from '../lib/date';
+import { url } from '../lib/url';
+
+const first = event.dates[0];
+const last = event.dates[event.dates.length - 1];
+const year = first.slice(0, 4);
+const entryOpen = event.entry.status === 'open' && event.entry.formUrl;
+---
+<section class="hero" aria-labelledby="hero-title">
+  <EntryBanner />
+  <div class="hero-inner">
+    <p class="hero-tagline">{event.tagline}</p>
+    <h1 id="hero-title" class="hero-title">
+      <Image src={logo} alt={event.name} widths={[360, 720]} sizes="(max-width: 480px) 80vw, 360px" loading="eager" fetchpriority="high" />
+    </h1>
+    <dl class="hero-info">
+      <div>
+        <dt>開催日</dt>
+        <dd>
+          <span class="hero-year">{year}</span>
+          {formatMonthDay(first)}<small>({formatWeekday(first)})</small>
+          <span class="hero-sep">–</span>
+          {formatMonthDay(last)}<small>({formatWeekday(last)})</small>
+        </dd>
+      </div>
+      <div>
+        <dt>会場</dt>
+        <dd>
+          {event.venue}
+          {event.venueNote && <small class="hero-note">{event.venueNote}</small>}
+        </dd>
+      </div>
+    </dl>
+    <div class="hero-actions">
+      {entryOpen ? (
+        <a class="button button--primary" href={event.entry.formUrl} target="_blank" rel="noopener">サークル参加を申し込む</a>
+      ) : (
+        <a class="button button--primary" href={url('/pages/services.html')}>参加詳細を見る</a>
+      )}
+      <a class="button button--secondary" href={url('/pages/recruit.html')}>スタッフ募集中！</a>
+    </div>
+  </div>
+</section>

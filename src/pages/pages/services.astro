@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { site } from '../../data/site';
+import { site, forms } from '../../data/site';
+import FormButton from '../../components/FormButton.astro';
 ---
 <BaseLayout
   title="参加詳細"
@@ -11,9 +12,7 @@ import { site } from '../../data/site';
     　募集要項・日程は決定し次第、本ページやX(<a href={site.x.url} target="_blank" rel="noopener">@{site.x.handle}</a>)、メーリングリスト等で順次ご案内します。本ページをブックマークおよびXのフォローをしてお待ちください。
   </p>
 
+  <h2 id="mailing-list">メーリングリスト</h2>
   <p>　コミックさいたま関連情報配信用のメーリングリストは、下記からご登録いただけます。</p>
-
-  <div class="google_form" id="mail_form">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeD2Nd0S8iunS9BJnJxT49mUz4mOIA3MrH_DIeC6cKQBIM99w/viewform?usp=dialog" title="メーリングリスト登録フォーム">読み込んでいます…</iframe>
-  </div>
+  <FormButton href={forms.mailingList} label="メーリングリストに登録する" />
 </BaseLayout>

@@ -1,16 +1,38 @@
+/* --- Brand Colors（ロゴから抽出） --- */
+:root {
+  --color-brand: #007a38;        /* ボタン・強調（白文字とのコントラスト 5.5:1） */
+  --color-brand-strong: #00562a; /* フッター背景 */
+  --color-brand-tint: #f3f9f4;   /* 淡い背景 */
+  --color-teal: #00a99d;         /* 装飾用（文字には使わない） */
+  --color-lime: #8cc63f;         /* 装飾用（文字には使わない） */
+  --color-link: #00756c;
+  --color-text: #1f2a24;
+  --color-muted: #4a5a52;
+  --color-border: #d5e3d8;
+}
+
 body {
   font-family: sans-serif;
   margin: 0; /* Add margin reset */
+  color: var(--color-text);
+  background-color: #fff;
+}
+
+a {
+  color: var(--color-link);
 }
 
 h1 {
-  color: rgb(0, 0, 0);
+  color: var(--color-text);
   margin: 0; /* Adjust margin */
   font-size: 1.5rem; /* Adjust font size */
 }
 
 h2 {
   margin-top: 2em;
+  padding-left: 0.6em;
+  border-left: 5px solid var(--color-brand);
+  line-height: 1.4;
 }
 
 p {
@@ -18,8 +40,9 @@ p {
 }
 
 header {
-  background-color: #f0f0f0;
-  padding: 1rem;
+  background-color: #fff;
+  border-bottom: 4px solid var(--color-lime);
+  padding: 0.75rem 1rem;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -28,7 +51,7 @@ header {
 }
 
 footer {
-  background-color: #333;
+  background-color: var(--color-brand-strong);
   color: white;
   padding: 2rem 1rem; /* More padding */
   text-align: center;
@@ -63,7 +86,7 @@ footer {
 }
 
 .contact-info a {
-  color: #ffffff; /* Light blue for links */
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -87,11 +110,11 @@ footer {
 }
 
 .social-links a:hover {
-  color: #a0cff0; /* Light blue on hover */
+  color: var(--color-lime);
 }
 
 .social-links a span {
-  color: #ffffff; /* Light blue, same as email link */
+  color: #ffffff;
 }
 
 .social-links a:hover span {
@@ -103,7 +126,7 @@ footer {
   height: 24px;
 }
 
-main {
+.content {
   max-width: 800px; /* Constrain content width */
   margin: 0 auto; /* Center the content */
   padding: 1rem;
@@ -111,7 +134,7 @@ main {
 }
 
 main h1 {
-  border-bottom: 2px solid #ccc;
+  border-bottom: 3px solid var(--color-brand);
   padding-bottom: 0.5em;
   margin-bottom: 1em;
 }
@@ -129,6 +152,11 @@ main ul {
   margin-bottom: 1em;
 }
 
+.page-note {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
 /* Hamburger Menu Icon */
 .hamburger-menu {
   width: 30px;
@@ -144,7 +172,7 @@ main ul {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: #333;
+  background-color: var(--color-brand);
   border-radius: 3px;
   transition: all 0.3s ease-in-out;
 }
@@ -156,7 +184,7 @@ main ul {
   top: 100%;
   right: 0;
   background-color: white;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   width: 200px;
   z-index: 99;
 }
@@ -175,12 +203,13 @@ main ul {
   display: block;
   padding: 1rem;
   text-decoration: none;
-  color: #333;
+  color: var(--color-text);
   border-bottom: 1px solid #eee;
 }
 
 .global-nav li a:hover {
-  background-color: #f0f0f0;
+  background-color: var(--color-brand-tint);
+  color: var(--color-brand);
 }
 
 /* Hamburger animation */
@@ -237,7 +266,7 @@ main ul {
   }
 
   .global-nav li a:hover {
-    background-color: #ddd; /* Hover effect for desktop */
+    background-color: var(--color-brand-tint); /* Hover effect for desktop */
   }
 
   /* Ensure the active class doesn't hide the nav on desktop */
@@ -253,31 +282,10 @@ main ul {
     justify-content: space-between;
   }
 
-  header h1 {
-    font-size: 1.2rem; /* Slightly smaller title on mobile */
-  }
-
   .global-nav {
     width: 100%; /* Full width on mobile */
     right: 0;
   }
-}
-
-/* Google Form Styles */
-.google_form {
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-
-.google_form iframe {
-  width: 100%;
-  max-width: 640px; /* フォームの一般的な最大幅 */
-  height: 800px; /* フォームの高さ */
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  display: block; /* 中央揃えのためにblock要素にする */
-  margin-left: auto;
-  margin-right: auto;
 }
 
 /* Signature Block Style */
@@ -288,10 +296,246 @@ main ul {
 /* Header Logo Style */
 .header-logo {
   display: inline-block;
+  line-height: 0;
 }
 
-.header-logo svg {
-  vertical-align: middle; /* 他要素との縦方向の位置を調整 */
+.header-logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* --- Buttons --- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  min-height: 48px;
+  padding: 0.75em 1.5em;
+  border-radius: 999px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--color-teal);
+  outline-offset: 2px;
+}
+
+.button--primary {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
+.button--primary:hover {
+  background-color: var(--color-brand-strong);
+}
+
+.button--secondary {
+  background-color: #fff;
+  color: var(--color-brand);
+  border: 2px solid var(--color-brand);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-brand-tint);
+}
+
+.button-icon {
+  flex-shrink: 0;
+}
+
+/* External form button（Googleフォーム） */
+.form-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+  margin: 2em 0;
+}
+
+.form-button .button {
+  width: 100%;
+  max-width: 360px;
+}
+
+.form-button-note {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* --- Hero（トップページ） --- */
+.hero {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(140, 198, 63, 0.18), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(0, 169, 157, 0.16), transparent 45%),
+    var(--color-brand-tint);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem 2.5rem;
+  text-align: center;
+}
+
+.hero-tagline {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.25em 1em;
+  border-radius: 999px;
+  background-color: var(--color-brand);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+
+main .hero-title {
+  border: none;
+  margin: 0 auto 1.5rem;
+  padding: 0;
+  line-height: 0;
+}
+
+.hero-title img {
+  width: min(80vw, 360px);
+  height: auto;
+}
+
+.hero-info {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto 1.75rem;
+  text-align: left;
+}
+
+.hero-info > div {
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  align-items: baseline;
+  gap: 0.75em;
+}
+
+.hero-info dt {
+  padding: 0.15em 0;
+  border-radius: 4px;
+  background-color: var(--color-text);
+  color: #fff;
+  font-size: 0.8125rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hero-info dd {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+.hero-info dd small {
+  font-size: 0.75em;
+  font-weight: normal;
+}
+
+.hero-year {
+  margin-right: 0.4em;
+  font-size: 0.8em;
+  color: var(--color-muted);
+}
+
+.hero-sep {
+  margin: 0 0.3em;
+}
+
+.hero-info .hero-note {
+  display: block;
+  color: var(--color-muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .hero-inner {
+    padding: 3rem 1rem 3.5rem;
+  }
+
+  .hero-info dd {
+    font-size: 1.375rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-actions .button {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+/* --- Entry banner（申込状況の帯） --- */
+.entry-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  font-size: 0.9375rem;
+}
+
+.entry-banner-text {
+  margin: 0;
+}
+
+.entry-banner-text strong {
+  margin-right: 0.5em;
+}
+
+.entry-banner-link {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.entry-banner--upcoming {
+  background-color: #fff;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.entry-banner--open {
+  background-color: var(--color-brand);
+  color: #fff;
+}
+
+.entry-banner--open .entry-banner-link {
+  padding: 0.25em 1em;
+  border-radius: 999px;
+  background-color: #fff;
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+.entry-countdown {
+  margin-left: 0.25em;
+  font-weight: bold;
+}
+
+.entry-banner--closed {
+  background-color: #eef1ef;
+  color: var(--color-muted);
 }
 
 /* News Style */
@@ -307,7 +551,7 @@ main ul {
 
 .news-list time {
   margin-right: 1em;
-  color: #666;
+  color: var(--color-muted);
 }
 
 .news-body {

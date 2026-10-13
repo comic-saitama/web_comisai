@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsList from '../components/NewsList.astro';
+import Hero from '../components/Hero.astro';
 import { url } from '../lib/url';
 ---
 <BaseLayout
@@ -8,8 +9,8 @@ import { url } from '../lib/url';
   ogTitle="コミックさいたま（仮）準備会"
   description="埼玉大学の学園祭「むつめ祭」での同人誌即売会開催を目指す準備会の公式サイト。イベント開催情報、サークル参加やスタッフ募集についてご案内します。"
 >
-  <h1>トップ</h1>
-  <p>本ページの内容は2026年1月4日現在のものです。内容は随時更新いたします。</p>
+  <Hero slot="hero" />
+  <p class="page-note">本ページの内容は2026年1月4日現在のものです。内容は随時更新いたします。</p>
 
   <NewsList />
 

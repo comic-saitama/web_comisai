@@ -4,8 +4,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ["main"]
+  # すべての PR でビルドを確認する（PR の上に重ねた PR も含む）
   pull_request:
-    branches: ["main"]
   workflow_dispatch:
 
 permissions:

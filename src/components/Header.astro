@@ -2,6 +2,8 @@
 import { site } from '../data/site';
 import { url } from '../lib/url';
 import XIcon from './XIcon.astro';
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 
 const navItems = [
   { href: url('/'), label: 'ホーム' },
@@ -12,10 +14,7 @@ const navItems = [
 ---
 <header>
   <a href={url('/')} class="header-logo" aria-label="トップページへ">
-    <svg height="40" width="200" xmlns="http://www.w3.org/2000/svg">
-      <rect height="100%" width="100%" fill="#eee" />
-      <text x="50%" y="50%" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle" dominant-baseline="middle">コミックさいたま</text>
-    </svg>
+    <Image src={logo} alt={site.name} height={40} densities={[1, 2]} loading="eager" />
   </a>
   <div class="hamburger-menu">
     <span></span>
