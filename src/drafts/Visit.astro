@@ -1,0 +1,84 @@
+---
+// 来場案内（下書き）。「仮」（<Tentative>）や「未定」の箇所を準備会で確定させてから公開する（issue #15）。
+// アクセス・会場のルールは、むつめ祭公式サイト（https://mutsume.com/access/ ・ /guide/）の情報をもとにしている。
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DraftBanner from '../components/DraftBanner.astro';
+import Tentative from '../components/Tentative.astro';
+import { event } from '../data/site';
+import { formatJaDate } from '../lib/date';
+import { url } from '../lib/url';
+
+const datesText = event.dates.length > 0 ? event.dates.map(formatJaDate).join('・') : '';
+---
+<BaseLayout
+  title="来場案内"
+  description="むつめ祭同人誌即売会『コミックさいたま』へのご来場案内です。開催日時・会場・アクセス・来場時の注意事項をご案内します。"
+  noindex
+>
+  <DraftBanner issue={15}>
+    このページは <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。
+    「<span class="tentative-badge">仮</span>」の箇所はたたき台、「未定」の箇所はまだ決まっていない項目です。
+  </DraftBanner>
+
+  <h1>来場案内</h1>
+  <p>『コミックさいたま』は、埼玉大学の学園祭「むつめ祭」の中で開く同人誌即売会です。どなたでもご来場いただけます。</p>
+
+  <h2>開催概要</h2>
+  <dl class="spec-list">
+    <div>
+      <dt>開催日</dt>
+      <dd>
+        {datesText || <>{event.period}（全日程・3日間）<small class="spec-note">日付は決定し次第お知らせします</small></>}
+      </dd>
+    </div>
+    <div>
+      <dt>開催時間</dt>
+      <dd><Tentative>各日 10:00〜17:00</Tentative></dd>
+    </div>
+    <div>
+      <dt>会場</dt>
+      <dd>
+        埼玉大学 大久保キャンパス（さいたま市桜区下大久保255）
+        <small class="spec-note">建物・教室は <span class="tbd">未定</span></small>
+      </dd>
+    </div>
+    <div>
+      <dt>入場料</dt>
+      <dd><Tentative>無料</Tentative></dd>
+    </div>
+    <div>
+      <dt>学外の方のご来場</dt>
+      <dd><Tentative>どなたでもご来場いただけます（むつめ祭の来場ルールに従います）</Tentative></dd>
+    </div>
+  </dl>
+
+  <h2>アクセス</h2>
+  <p>一般の方向けの駐車場はありません。公共交通機関でお越しください。</p>
+  <ul>
+    <li><strong>JR京浜東北線「北浦和駅」西口から</strong>：「埼玉大学」行きのバスで終点「埼玉大学」下車</li>
+    <li><strong>JR埼京線「南与野駅」西口から</strong>：「北入口経由」のバスで終点「埼玉大学」下車（徒歩の場合は約30分）</li>
+    <li><strong>東武東上線「志木駅」東口から</strong>：「南与野駅西口」行きのバスで「埼玉大学」下車</li>
+  </ul>
+  <p>運賃・時刻・臨時便は、各交通機関と<a href="https://mutsume.com/access/" target="_blank" rel="noopener">むつめ祭公式サイトのアクセス案内</a>で最新の情報をご確認ください。</p>
+
+  <h2>ご来場時のお願い</h2>
+  <h3>むつめ祭のルール</h3>
+  <ul>
+    <li>会場での飲酒は禁止です</li>
+    <li>喫煙は指定された場所でのみ可能です</li>
+    <li>危険な行為はおやめください。緊急時はスタッフの誘導に従ってください</li>
+  </ul>
+  <p>そのほかのルールは<a href="https://mutsume.com/guide/" target="_blank" rel="noopener">むつめ祭公式サイトの来場者ガイド</a>をご覧ください。</p>
+
+  <h3>即売会でのお願い</h3>
+  <ul>
+    <li><Tentative>頒布物やサークルの写真を撮るときは、必ずサークルの方の許可を得てください</Tentative></li>
+    <li><Tentative>列ができた場合は、スタッフの案内に従って並んでください。通路での立ち止まりはご遠慮ください</Tentative></li>
+    <li><Tentative>コスプレでのご来場・更衣は、むつめ祭のルールに従ってください（即売会の会場に更衣室はありません）</Tentative></li>
+    <li><Tentative>ゴミはお持ち帰りいただくか、指定のゴミ箱をご利用ください</Tentative></li>
+    <li><Tentative>お支払いは現金が基本です。小銭をご用意いただくとスムーズです</Tentative></li>
+  </ul>
+
+  <h2>サークル一覧</h2>
+  <p>サークル参加の申込締切後に掲載します。参加方法は<a href={url('/pages/services.html')}>参加詳細</a>をご覧ください。</p>
+</BaseLayout>

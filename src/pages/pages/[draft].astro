@@ -2,12 +2,14 @@
 // 下書きページ用のルート。npm run dev のときだけページを生成し、本番ビルドでは何も出力しない。
 // 公開するときは、下書きを src/pages/pages/<名前>.astro に移して、ここの一覧から外す。
 import PolicyDraft from '../../drafts/Policy.astro';
+import VisitDraft from '../../drafts/Visit.astro';
 
 export function getStaticPaths() {
   if (!import.meta.env.DEV) return [];
-  return [{ params: { draft: 'policy' } }];
+  return [{ params: { draft: 'policy' } }, { params: { draft: 'visit' } }];
 }
 
 const { draft } = Astro.params;
 ---
 {draft === 'policy' && <PolicyDraft />}
+{draft === 'visit' && <VisitDraft />}

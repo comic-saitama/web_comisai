@@ -1,0 +1,11 @@
+---
+// 仮（たたき台）の文言。npm run dev では「仮」の印付きで表示する。
+// 本番ビルド（公開サイト）でこの部品が使われるとビルドを失敗させる。
+// → 下書きページを公開するときは、仮の文言を確定させてから <Tentative> を外すこと。
+if (import.meta.env.PROD) {
+  throw new Error(
+    `仮（<Tentative>）の文言が公開ページに残っています: ${Astro.url.pathname}。準備会で確定させてから <Tentative> を外してください。`,
+  );
+}
+---
+<span class="tentative"><span class="tentative-badge" title="たたき台（未確定）">仮</span><slot /></span>

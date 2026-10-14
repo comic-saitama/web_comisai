@@ -846,3 +846,14 @@ main .hero-title {
   font-weight: bold;
   vertical-align: 0.1em;
 }
+
+/* 仮（たたき台）の文言（npm run dev でだけ表示される） */
+.tentative {
+  padding: 0 0.15em;
+  background-color: #fef3c7;
+  border-bottom: 1px dashed #b45309;
+}
+
+.tentative .tentative-badge {
+  margin: 0 0.3em 0 0;
+}
