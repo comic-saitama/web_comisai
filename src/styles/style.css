@@ -833,3 +833,16 @@ main .hero-title {
     gap: 1em;
   }
 }
+
+/* たたき台（未確定）の項目の印 */
+.tentative-badge {
+  display: inline-block;
+  margin-left: 0.4em;
+  padding: 0 0.4em;
+  border-radius: 4px;
+  background-color: #b45309;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+  vertical-align: 0.1em;
+}

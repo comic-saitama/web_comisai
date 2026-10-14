@@ -48,7 +48,8 @@ date: 2026-10-20
 `src/data/participation.ts` の各項目の `value` を、決まったものから埋めます。空の項目は「未定」と表示されます。
 
 - `published: false` の間は、参加詳細ページの募集要項欄は `npm run dev` でだけ下書きとして表示されます
-- 内容を準備会で確認したら `published: true` にすると公開されます（issue #14）
+- 「仮」の印が付いた項目（`tentative: true`）はたたき台です。確定したら `tentative` の行を消します
+- 内容を準備会で確認したら `published: true` にすると公開されます（issue #14）。**「仮」の項目が残っているとビルドが失敗する**ので、仮の内容がうっかり公開されることはありません
 
 ### Discord サーバーを表示する
 
