@@ -88,8 +88,11 @@ Node.js をインストールしなくても、ブラウザ上で開発サーバ
 `src/drafts/` に置いたページは、開発サーバー（`npm run dev`）でだけ表示され、公開サイトには出力されません（リンクも出ません）。
 
 - 個人情報の取り扱い（下書き）: http://localhost:4321/web_comisai/pages/policy.html
+- 来場案内（下書き）: http://localhost:4321/web_comisai/pages/visit.html
 - 参加詳細の募集要項欄（下書き）: http://localhost:4321/web_comisai/pages/services.html
 - お知らせの下書き（`draft: true`）: トップページの「お知らせ」
+
+下書きの中で「仮」の印が付いた文言は `<Tentative>` で囲んであります。確定したら `<Tentative>` を外してください。**`<Tentative>` が残ったまま公開ページにすると、ビルドが失敗します**（仮の文言が公開されないため）。
 
 公開するときは、下書きを `src/pages/pages/` に移して `src/pages/pages/[draft].astro` の一覧から外し、`showDrafts` で隠しているリンクを常に表示するように変えます。
 

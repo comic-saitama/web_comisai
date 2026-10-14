@@ -1,8 +1,9 @@
 ---
-// プライバシーポリシー（下書き）。「要決定」の箇所を準備会で決めてから公開する（issue #13）。
+// プライバシーポリシー（下書き）。「仮」（<Tentative>）の箇所を準備会で確定させてから公開する（issue #13）。
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 import DraftBanner from '../components/DraftBanner.astro';
+import Tentative from '../components/Tentative.astro';
 ---
 <BaseLayout
   title="個人情報の取り扱いについて"
@@ -11,7 +12,7 @@ import DraftBanner from '../components/DraftBanner.astro';
 >
   <DraftBanner issue={13}>
     このページは <code>npm run dev</code> でだけ表示され、公開サイトには出力されません。
-    <mark class="todo">要決定</mark> の箇所を準備会で決めてから公開してください。
+    「<span class="tentative-badge">仮</span>」の箇所はたたき台です。準備会で確定させ、<code>&lt;Tentative&gt;</code> を外してから公開してください（残っていると公開用のビルドが失敗します）。
   </DraftBanner>
 
   <h1>個人情報の取り扱いについて</h1>
@@ -44,19 +45,19 @@ import DraftBanner from '../components/DraftBanner.astro';
     <li>スタッフ応募の受付、本人確認、活動に関するご連絡</li>
     <li>メーリングリストによるイベント情報の配信</li>
     <li>お問い合わせへの回答</li>
-    <li><mark class="todo">要決定：むつめ祭実行委員会への届出など、ほかに利用する目的があれば追記</mark></li>
+    <li><Tentative>むつめ祭への企画参加に必要な、むつめ祭常任委員会への届出</Tentative></li>
   </ul>
 
   <h2>3. 管理と保管期間</h2>
   <ul>
-    <li>フォームの回答は Google フォームおよび Google スプレッドシートに保存し、閲覧できるのは <mark class="todo">要決定：例「運営メンバーのうち担当者」</mark> に限ります。</li>
-    <li>スタッフ応募の情報は、<mark class="todo">要決定：例「イベント終了後6か月」</mark> を経過したのち削除します。</li>
+    <li>フォームの回答は Google フォームおよび Google スプレッドシートに保存し、閲覧できるのは <Tentative>当会の運営メンバーのうち、各フォームの担当者</Tentative> に限ります。</li>
+    <li>スタッフ応募の情報は、<Tentative>イベント終了後6か月</Tentative> を経過したのち削除します。</li>
     <li>メーリングリストの登録情報は、登録解除のお申し出をいただいた時点で削除します。</li>
   </ul>
 
   <h2>4. 第三者への提供</h2>
   <p>ご本人の同意がある場合、または法令に基づく場合を除き、お預かりした情報を第三者に提供することはありません。</p>
-  <p><mark class="todo">要決定：むつめ祭実行委員会や大学へ提出する情報がある場合は、提出先と項目を明記</mark></p>
+  <p><Tentative>ただし、むつめ祭への企画参加の届出のため、スタッフのお名前・所属をむつめ祭常任委員会に提出することがあります。</Tentative></p>
 
   <h2>5. 外部サービスの利用</h2>
   <p>各種フォームには Google LLC が提供する「Google フォーム」を利用しており、入力された情報は同社のサーバーに保存されます。また、本サイトから X・Discord などの外部サービスへリンクしています。リンク先での情報の取り扱いは、各サービスのプライバシーポリシーをご確認ください。</p>
@@ -71,17 +72,10 @@ import DraftBanner from '../components/DraftBanner.astro';
   <h2>7. 改定</h2>
   <p>本ポリシーの内容は、必要に応じて改定することがあります。改定した場合は本ページでお知らせします。</p>
 
-  <p class="policy-date">制定日：<mark class="todo">要決定</mark><br>{site.copyrightHolder}</p>
+  <p class="policy-date">制定日：<Tentative>（公開する日を記入）</Tentative><br>{site.copyrightHolder}</p>
 </BaseLayout>
 
 <style>
-  .todo {
-    padding: 0 0.25em;
-    background-color: #fde68a;
-    color: #78350f;
-    font-weight: bold;
-  }
-
   .policy-date {
     margin-top: 2em;
     text-align: right;
