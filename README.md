@@ -114,6 +114,14 @@ Node.js をインストールしなくても、ブラウザ上で開発サーバ
 - `main` はブランチ保護されています。直接 push はできず、ビルドが成功しない PR はマージできません（管理者も同様）。
 - GitHub の画面でファイルを編集したときは、「Commit directly to the `main` branch」ではなく「Create a new branch for this commit and start a pull request」を選んでください。
 
+## 外部リンクの定期チェック
+
+毎週月曜 9:00 に GitHub Actions（`.github/workflows/link-check.yml`）が、サイトに載せている外部リンク（Google フォーム、むつめ祭公式サイトなど）にアクセスできるかを確認します。切れていたら `link-check` ラベルの issue が作られます。
+
+- X（x.com）はボット対策で自動確認できないため対象外です
+- 「Actions」→「Check external links」→「Run workflow」で、いつでも手動で実行できます
+- 手元では `npm run build` のあと `npm run check:external-links` で確認できます
+
 ## 手元で確認する
 
 Node.js 22.12 以上が必要です。

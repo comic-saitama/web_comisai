@@ -1,0 +1,47 @@
+# 公開サイトの外部リンク（Google フォーム・むつめ祭公式サイトなど）が切れていないかを週1回確認する。
+# 切れていたら「link-check」ラベルの issue を作る（すでに開いていればコメントを追加する）。
+name: Check external links
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # 毎週月曜 9:00（日本時間）
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npx astro build
+      - name: Check external links
+        id: check
+        continue-on-error: true
+        run: npm run check:external-links
+      - name: Open or update issue
+        if: steps.check.outcome == 'failure' && hashFiles('broken-links.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create link-check --color D93F0B --description "外部リンクの定期チェック" 2>/dev/null || true
+          num=$(gh issue list --label link-check --state open --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then
+            gh issue comment "$num" --body-file broken-links.md
+          else
+            gh issue create --title "外部リンクが切れています（自動チェック）" --label link-check --body-file broken-links.md
+          fi
+      - name: Fail if links are broken
+        if: steps.check.outcome == 'failure'
+        run: exit 1

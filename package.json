@@ -11,7 +11,8 @@
     "build": "astro check && astro build && npm run check:links",
     "preview": "astro preview",
     "check": "astro check",
-    "check:links": "node scripts/check-links.mjs"
+    "check:links": "node scripts/check-links.mjs",
+    "check:external-links": "node scripts/check-external-links.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
